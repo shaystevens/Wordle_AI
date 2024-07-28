@@ -7,6 +7,7 @@ global_words = None
 global_letters = None
 global_zero_letters = None
 global_words_score = {}
+_known_letters = set()
 
 
 def initialize_global_variables():
@@ -49,12 +50,14 @@ def remove_words(words, letter, index, state):
       return [word for word in words if letter not in word]
 
     case "present":
+      _known_letters.add(letter)
       return [
         word for word in words
         if not (letter in word and word[index] == letter) and letter in word
       ]
 
     case "correct":
+      _known_letters.add(letter)
       return [word for word in words if letter in word]
       #return [word for word in words if word[index] == letter] # Unomment for hard mode
 

@@ -32,7 +32,5 @@ while guesses < 7:
   letter_frequency.global_words_score = {}
   letter_frequency.global_letters = letter_frequency.global_zero_letters.copy()
 
-
-
 time.sleep(10)
 exit_wordle()
