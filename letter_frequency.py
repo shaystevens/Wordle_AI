@@ -58,8 +58,8 @@ def remove_words(words, letter, index, state):
 
     case "correct":
       _known_letters.add(letter)
-      return [word for word in words if letter in word]
-      #return [word for word in words if word[index] == letter] # Unomment for hard mode
+      #return [word for word in words if letter in word]
+      return [word for word in words if word[index] == letter] # Unomment for hard mode
 
 
 def print_guess_word(word, states):

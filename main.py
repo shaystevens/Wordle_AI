@@ -10,7 +10,7 @@ correct_word = None
 start_wordle()
 initialize_global_variables()
 
-
+start_time = time.time()
 while guesses < 7:
   time.sleep(0.5)
   calculate_letter_frequency()
@@ -25,7 +25,9 @@ while guesses < 7:
 
   print_guess_word(guess_word, states)
   if all(state == "correct" for state in states):
-    #print(guess_word)
+    end_time = time.time()
+    elapsed_time = end_time - start_time
+    print(f"Solved in {elapsed_time:.2f} seconds.")
     break
 
   for index in range(len(guess_word)):
