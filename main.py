@@ -6,12 +6,13 @@ import time
 guesses = 0
 correct_word = None
 
-time.sleep(0.5)
+#time.sleep(0.5)
 start_wordle()
 initialize_global_variables()
 
-time.sleep(1)
+
 while guesses < 7:
+  time.sleep(0.5)
   calculate_letter_frequency()
   calculate_words_score()
 
@@ -19,11 +20,12 @@ while guesses < 7:
   input_guess(guess_word)
   guesses += 1
 
-  time.sleep(2)
+  time.sleep(1.5)
   states = get_word_results(guesses)
 
+  print_guess_word(guess_word, states)
   if all(state == "correct" for state in states):
-    print(guess_word)
+    #print(guess_word)
     break
 
   for index in range(len(guess_word)):

@@ -61,3 +61,22 @@ def remove_words(words, letter, index, state):
       return [word for word in words if letter in word]
       #return [word for word in words if word[index] == letter] # Unomment for hard mode
 
+
+def print_guess_word(word, states):
+  BACKGROUND_GREEN = "\033[42m"
+  BACKGROUND_YELLOW = "\033[43m"
+  RESET = "\033[0m"
+
+  for index in range(len(word)):
+    colored_letter = ""
+    match states[index]:
+      case "correct":
+        colored_letter += BACKGROUND_GREEN + word[index] + RESET
+        print(colored_letter, end="")
+      case "present":
+        colored_letter += BACKGROUND_YELLOW + word[index] + RESET
+        print(colored_letter, end="")
+      case "absent":
+        print(word[index], end="")
+
+  print() 
