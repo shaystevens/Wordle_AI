@@ -47,7 +47,7 @@ def get_guess_word():
 def remove_words(words, letter, index, state):
   match state:
     case "absent":
-      return [word for word in words if letter not in word]
+      return [word for word in words if letter not in word and letter not in _known_letters]
 
     case "present":
       _known_letters.add(letter)
