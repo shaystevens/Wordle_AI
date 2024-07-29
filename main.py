@@ -27,7 +27,11 @@ while guesses < 7:
   if all(state == "correct" for state in states):
     end_time = time.time()
     elapsed_time = end_time - start_time
-    print(f"Solved in {elapsed_time:.2f} seconds.")
+    if(guesses < 2):
+      print(f"Solved with {guesses} guess in {elapsed_time:.2f} seconds.")
+    else:
+      print(f"Solved with {guesses} guesses in {elapsed_time:.2f} seconds.")
+
     break
 
   for index in range(len(guess_word)):
@@ -36,5 +40,5 @@ while guesses < 7:
   letter_frequency.global_words_score = {}
   letter_frequency.global_letters = letter_frequency.global_zero_letters.copy()
 
-time.sleep(10)
+time.sleep(3)
 exit_wordle()
