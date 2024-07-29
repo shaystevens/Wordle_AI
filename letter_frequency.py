@@ -1,6 +1,8 @@
 import math
 from collections import Counter
 from wordle_words import *
+import os
+os.system('')
 
 # Global Variables
 global_words = None

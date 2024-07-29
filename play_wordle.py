@@ -18,6 +18,7 @@ _options.add_argument('--inprivate')
 _options.add_argument('--disable-cache')
 _options.add_argument('--disable-application-cache')
 _options.add_experimental_option("detach", True) # Keep Browser open
+_options.add_argument("--log-level=3")
 
 # Start Driver
 _service = Service(executable_path=_edge_driver_path)
