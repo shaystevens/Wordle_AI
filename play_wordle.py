@@ -19,12 +19,19 @@ _options.add_argument('--disable-cache')
 _options.add_argument('--disable-application-cache')
 _options.add_experimental_option("detach", True) # Keep Browser open
 _options.add_argument("--log-level=3")
+_driver = None
 
-# Start Driver
-_service = Service(executable_path=_edge_driver_path)
-_driver = webdriver.Edge(service=_service, options=_options)
 
-def start_wordle():
+def start_wordle(quiet):
+  if quiet:
+    _options.add_argument('--headless')
+    _options.add_argument('--disable-gpu')
+
+  # Start Driver
+  _service = Service(executable_path=_edge_driver_path)
+  global _driver
+  _driver = webdriver.Edge(service=_service, options=_options)
+  
   url = "https://www.nytimes.com/games/wordle/index.html" # Wordle URL
   _driver.get(url) 
 
