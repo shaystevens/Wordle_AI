@@ -7,10 +7,13 @@ from letter_frequency import *
 
 def main(hard_mode=False, quiet=False, start_word=None):
   guesses = 0
-
-  #time.sleep(0.5)
-  start_wordle(quiet)
+  
   initialize_global_variables()
+  if start_word is not None and len(start_word) != 5 or start_word not in letter_frequency.global_words:
+    print("Invalid word. Try again.")
+    exit(1)
+  
+  start_wordle(quiet)
 
   start_time = time.time()
   while guesses < 7:
