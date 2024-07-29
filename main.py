@@ -9,7 +9,7 @@ def main(hard_mode=False, quiet=False, start_word=None):
   guesses = 0
   
   initialize_global_variables()
-  if start_word is not None and len(start_word) != 5 or start_word not in letter_frequency.global_words:
+  if start_word is not None and (len(start_word) != 5 or start_word not in letter_frequency.global_words):
     print("Invalid word. Try again.")
     exit(1)
   
