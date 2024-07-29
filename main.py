@@ -27,11 +27,7 @@ while guesses < 7:
   if all(state == "correct" for state in states):
     end_time = time.time()
     elapsed_time = end_time - start_time
-    if(guesses < 2):
-      print(f"Solved with {guesses} guess in {elapsed_time:.2f} seconds.")
-    else:
-      print(f"Solved with {guesses} guesses in {elapsed_time:.2f} seconds.")
-
+    print(f"Solved with {guesses} {"guess" if guesses < 2 else "guesses"} in {elapsed_time:.2f} seconds.")
     break
 
   for index in range(len(guess_word)):
