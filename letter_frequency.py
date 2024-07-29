@@ -9,7 +9,7 @@ global_words = None
 global_letters = None
 global_zero_letters = None
 global_words_score = {}
-_known_letters = set()
+global_known_letters = set()
 
 
 def initialize_global_variables():
@@ -50,10 +50,10 @@ def remove_words(words, letter, index, state, hard_mode):
   match state:
     case "absent":
       #return [word for word in words if letter not in word and letter not in _known_letters]
-      return [word for word in words if letter not in word or letter in _known_letters]
+      return [word for word in words if letter not in word or letter in global_known_letters]
 
     case "present":
-      _known_letters.add(letter)
+      global_known_letters.add(letter)
       return [
         word for word in words
         if not (letter in word and word[index] == letter) and letter in word
@@ -61,7 +61,7 @@ def remove_words(words, letter, index, state, hard_mode):
       
 
     case "correct":
-      _known_letters.add(letter)
+      #known_letters.add(letter)
       if hard_mode:
         return [word for word in words if word[index] == letter] 
       else:
