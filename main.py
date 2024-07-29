@@ -17,8 +17,12 @@ def main(hard_mode=False, quiet=False, start_word=None):
     time.sleep(0.5)
     calculate_letter_frequency()
     calculate_words_score()
-
     guess_word = get_guess_word()
+
+    if start_word is not None and guesses < 1:
+      guess_word = start_word
+
+    
     input_guess(guess_word)
     guesses += 1
 
@@ -31,7 +35,7 @@ def main(hard_mode=False, quiet=False, start_word=None):
       elapsed_time = end_time - start_time
       print(f"Solved with {guesses} {"guess" if guesses < 2 else "guesses"} in {elapsed_time:.2f} seconds.")
       break
-
+    
     for index in range(len(guess_word)):
       letter_frequency.global_words = remove_words(letter_frequency.global_words, guess_word[index], index, states[index], hard_mode)
 
