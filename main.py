@@ -36,7 +36,7 @@ def main(hard_mode=False, quiet=False, start_word=None):
     if all(state == "correct" for state in states):
       end_time = time.time()
       elapsed_time = end_time - start_time
-      print(f"Solved with {guesses} {"guess" if guesses < 2 else "guesses"} in {elapsed_time:.2f} seconds.")
+      print(f"Solved with {guesses} {'guess' if guesses < 2 else 'guesses'} in {elapsed_time:.2f} seconds.")
       break
     
     letter_frequency.global_known_letters = {letter for letter, state in zip(guess_word, states) if state == "correct"}
