@@ -45,8 +45,12 @@ def calculate_words_score():
 
   global_words_score = {word: 0 for word in global_words}
   for word in global_words:
-    for letter in set(word):
-      global_words_score[word] += global_letters[letter]
+    for index in range(5):
+      global_words_score[word] += global_normalised_letters[word[index]] * global_letter_weights[word[index]][index]
+    
+    global_words_score[word] *= len(set(word))
+    # for letter in set(word):
+    #   global_words_score[word] += global_letters[letter]
 
 
 def get_guess_word():

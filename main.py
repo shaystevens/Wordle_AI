@@ -14,7 +14,7 @@ def main(hard_mode=False, quiet=False, start_word=None):
     exit(1)
   
   calculate_index_weight(possible_solutions=letter_frequency.global_words)
-  print(letter_frequency.global_letter_weights)
+  #print(letter_frequency.global_letter_weights)
 
   start_wordle(quiet)
 
