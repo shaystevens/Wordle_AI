@@ -63,7 +63,8 @@ def remove_words(words, letter, index, state, hard_mode):
   match state:
     case "absent":
       #return [word for word in words if letter not in word and letter not in _known_letters]
-      return [word for word in words if letter not in word or letter in global_known_letters]
+      return [word for word in words if (letter not in word or letter in global_known_letters) and word[index] != letter]
+
 
     case "present":
       global_known_letters.add(letter)
