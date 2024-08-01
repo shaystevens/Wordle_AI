@@ -10,25 +10,32 @@ global_letters = None
 global_zero_letters = None
 global_words_score = {}
 global_known_letters = set()
+global_normalised_letters = None
 
 
 def initialize_global_variables():
   global global_words
   global global_letters
   global global_zero_letters
+  global global_normalised_letters
 
   global_words = get_words()
   global_letters = get_letters()
+  global_normalised_letters = global_letters.copy()
   global_zero_letters = global_letters.copy()
 
 
 def calculate_letter_frequency():
   global global_letters
   global global_words
+  global global_normalised_letters
 
   for word in global_words:
     for letter in word:
       global_letters[letter] += 1
+  
+  total_sum = sum(global_letters.values())
+  global_normalised_letters = {key: value / total_sum for key, value in global_letters.items()}
 
 
 def calculate_words_score():
