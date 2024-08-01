@@ -13,6 +13,9 @@ def main(hard_mode=False, quiet=False, start_word=None):
     print("Invalid word. Try again.")
     exit(1)
   
+  calculate_index_weight(possible_solutions=letter_frequency.global_words)
+  print(letter_frequency.global_letter_weights)
+
   start_wordle(quiet)
 
   start_time = time.time()

@@ -1,6 +1,7 @@
 import math
 from collections import Counter
 from wordle_words import *
+from collections import defaultdict
 import os
 os.system('')
 
@@ -11,6 +12,7 @@ global_zero_letters = None
 global_words_score = {}
 global_known_letters = set()
 global_normalised_letters = None
+global_letter_weights = {}
 
 
 def initialize_global_variables():
@@ -94,4 +96,19 @@ def print_guess_word(word, states):
       case "absent":
         print(word[index], end="")
 
-  print() 
+  print()
+
+
+def calculate_index_weight(letter_dict=defaultdict(lambda: [0, 0, 0, 0, 0]), possible_solutions=None):
+  total_counts = defaultdict(int)
+
+  for word in possible_solutions:
+      for index, letter in enumerate(word):
+          letter_dict[letter][index] += 1
+          total_counts[letter] += 1
+  
+  global global_letter_weights
+  for letter, counts in letter_dict.items():
+      total = total_counts[letter]
+      weights = [count / total for count in counts]
+      global_letter_weights[letter] = weights

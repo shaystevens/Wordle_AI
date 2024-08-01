@@ -32,3 +32,19 @@ for letter, weights in sorted(letter_weights.items()):
 end_time = time.time()
 elapsed_time = end_time - start_time
 print(f'Time Taken: {elapsed_time:.4f} seconds')
+
+def calculate_index_weight(letter_dict=defaultdict(lambda: [0, 0, 0, 0, 0]), possible_solutions=None):
+    total_counts = defaultdict(int)
+
+    for word in possible_solutions:
+        for index, letter in enumerate(word):
+            letter_dict[letter][index] += 1
+            total_counts[letter] += 1
+    
+    letter_weights = {}
+    for letter, counts in letter_dict.items():
+        total = total_counts[letter]
+        weights = [count / total for count in counts]
+        letter_weights[letter] = weights
+    
+
