@@ -6,6 +6,16 @@ from letter_frequency import *
 
 
 def main(quiet=False, start_word=None):
+  """
+  Main function for Wordle AI program.
+
+  Args:
+      quiet (bool): If True, suppresses output to the console. Defaults to False.
+      start_word (str): The starting word to use. If None, a default word will be chosen. Defaults to None.
+
+  Returns:
+      list: A list of valid Wordle words.
+  """
   guesses = 0
   
   initialize_global_variables()
@@ -13,12 +23,12 @@ def main(quiet=False, start_word=None):
     print("Invalid word. Try again.")
     exit(1)
 
-  start_wordle(quiet)
+  start_wordle(quiet) # Start wordle
 
   start_time = time.time()
   calculate_index_weight(possible_solutions=letter_frequency.global_words)
   while guesses < 7:
-    time.sleep(0.5)
+    time.sleep(0.5) # Let page load
     calculate_letter_frequency()
     calculate_words_score()
     guess_word = get_guess_word()
@@ -26,11 +36,10 @@ def main(quiet=False, start_word=None):
     if start_word is not None and guesses < 1:
       guess_word = start_word
 
-    
     input_guess(guess_word)
     guesses += 1
 
-    time.sleep(1.5)
+    time.sleep(1.5) # Wait for word input animation to finish
     states = get_word_results(guesses)
 
     print_guess_word(guess_word, states)
@@ -41,14 +50,16 @@ def main(quiet=False, start_word=None):
       print(f"Solved with {guesses} {'guess' if guesses < 2 else 'guesses'} in {elapsed_time:.2f} seconds.")
       break
     
+    # Letters that are known to be in the word
     letter_frequency.global_known_letters = {letter for letter, state in zip(guess_word, states) if (state == "correct" or state == "present")}
     for index in range(len(guess_word)):
+      # Remove words from possible solutions
       letter_frequency.global_words = remove_words(letter_frequency.global_words, guess_word[index], index, states[index])
 
-    letter_frequency.global_words_score = {}
-    letter_frequency.global_letters = letter_frequency.global_zero_letters.copy()
+    letter_frequency.global_words_score = {} # Reset words score
+    letter_frequency.global_letters = letter_frequency.global_zero_letters.copy() # Reset global letters
 
-  time.sleep(3)
+  time.sleep(5) # Allow page to slowly close
   exit_wordle()
 
 if __name__ == "__main__":
