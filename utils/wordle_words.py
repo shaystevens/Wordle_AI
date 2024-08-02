@@ -1,4 +1,4 @@
-def get_words(file_path='valid-wordle-words.txt'):
+def get_words(file_path=r'text_files\valid-wordle-words.txt'):
     """
     Reads Wordle words from a file and returns them as a list.
 
@@ -22,7 +22,7 @@ def get_words(file_path='valid-wordle-words.txt'):
         return []
     
 
-def get_letters(file_path='alphabet.txt'):
+def get_letters(file_path=r'text_files\alphabet.txt'):
     """
     Reads alphabet from a file and returns them as a dict.
 

@@ -1,4 +1,4 @@
-from wordle_words import *
+from utils.wordle_words import *
 from collections import defaultdict
 import os
 os.system('')

@@ -1,8 +1,8 @@
-import letter_frequency
+import utils.letter_frequency as letter_frequency
 import time
 import argparse
-from play_wordle import *
-from letter_frequency import *
+from utils.play_wordle import *
+from utils.letter_frequency import *
 
 
 def main(quiet=False, start_word=None):
