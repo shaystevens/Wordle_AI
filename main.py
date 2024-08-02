@@ -5,7 +5,7 @@ from play_wordle import *
 from letter_frequency import *
 
 
-def main(hard_mode=False, quiet=False, start_word=None):
+def main(quiet=False, start_word=None):
   guesses = 0
   
   initialize_global_variables()
@@ -44,7 +44,7 @@ def main(hard_mode=False, quiet=False, start_word=None):
     
     letter_frequency.global_known_letters = {letter for letter, state in zip(guess_word, states) if state == "correct"}
     for index in range(len(guess_word)):
-      letter_frequency.global_words = remove_words(letter_frequency.global_words, guess_word[index], index, states[index], hard_mode)
+      letter_frequency.global_words = remove_words(letter_frequency.global_words, guess_word[index], index, states[index])
 
     letter_frequency.global_words_score = {}
     letter_frequency.global_letters = letter_frequency.global_zero_letters.copy()
@@ -56,7 +56,6 @@ if __name__ == "__main__":
   parser = argparse.ArgumentParser(description="This Python program is designed to solve the New York Times Wordle game\nby leveraging letter frequency analysis and automating user input through Selenium.")
 
   # Adding optional arguments
-  parser.add_argument('--hard_mode', action='store_true', help='If set, enforces Wordle hard mode rules.')
   parser.add_argument('--quiet', action='store_true', help='Allows the program to simulate the game logic internally without opening a web browser.')
   parser.add_argument('--start_word', type=str, default=None, help='Choose starting word; defaults to a preset value if not specified.')
 
@@ -64,4 +63,4 @@ if __name__ == "__main__":
   args = parser.parse_args()
 
   # Running main with parsed arguments
-  main(hard_mode=args.hard_mode, quiet=args.quiet, start_word=args.start_word)
+  main(quiet=args.quiet, start_word=args.start_word)

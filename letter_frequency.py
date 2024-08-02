@@ -59,7 +59,7 @@ def get_guess_word():
   return guess_word
 
 
-def remove_words(words, letter, index, state, hard_mode):
+def remove_words(words, letter, index, state):
   match state:
     case "absent":
       #return [word for word in words if letter not in word and letter not in _known_letters]
@@ -76,10 +76,8 @@ def remove_words(words, letter, index, state, hard_mode):
 
     case "correct":
       #known_letters.add(letter)
-      if hard_mode:
-        return [word for word in words if word[index] == letter] 
-      else:
-        return [word for word in words if letter in word]
+      return [word for word in words if word[index] == letter] 
+      #return [word for word in words if letter in word]
       
         
 
