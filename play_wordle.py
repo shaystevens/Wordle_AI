@@ -21,6 +21,13 @@ _driver = None
 
 
 def start_wordle(quiet):
+  """
+  This function initializes the Wordle game.
+
+  Parameters:
+  quiet (bool): If True, runs the browser in headless mode (no UI). Otherwise, opens the browser with UI.
+
+  """
   if quiet:
     _options.add_argument('--headless') # Hide broswer
     _options.add_argument('--disable-gpu') # Needed for some OS
@@ -42,11 +49,24 @@ def start_wordle(quiet):
 
 
 def exit_wordle():
+  """
+  This function exits the web driver and closes the game.
+  """
   _driver.quit() # Close web driver
 
 
 
 def get_word_results(guess_number):
+  """
+  This function finds the state of each letter an returns the states of each letter.
+
+  Parameters:
+    guess_number (int): The nu,ber of the guess that was taken.
+  
+  Returns:
+  States: The state of each letter in an array.
+  
+  """
   row_div = _driver.find_element(By.CSS_SELECTOR, f'div[aria-label="Row {guess_number}"]')
 
   # Define the aria-labels of the letters
@@ -64,7 +84,13 @@ def get_word_results(guess_number):
 
 
 def input_guess(guess):
-  # Send guess input to body of Wordle page
+  """
+  This function inputs the guess into the body of the wordle game.
+
+  Parameters:
+  guess (str): The guess word.
+  
+  """
   body = _driver.find_element(By.CSS_SELECTOR, 'body')
   body.send_keys(guess)
   body.send_keys(Keys.ENTER)
