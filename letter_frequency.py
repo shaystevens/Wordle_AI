@@ -1,5 +1,3 @@
-import math
-from collections import Counter
 from wordle_words import *
 from collections import defaultdict
 import os
@@ -49,8 +47,6 @@ def calculate_words_score():
       global_words_score[word] += global_normalised_letters[word[index]] * global_letter_weights[word[index]][index]
     
     global_words_score[word] *= len(set(word))
-    # for letter in set(word):
-    #   global_words_score[word] += global_letters[letter]
 
 
 def get_guess_word():
@@ -62,25 +58,15 @@ def get_guess_word():
 def remove_words(words, letter, index, state):
   match state:
     case "absent":
-      #return [word for word in words if letter not in word and letter not in _known_letters]
       return [word for word in words if (letter not in word or letter in global_known_letters) and word[index] != letter]
-
-
     case "present":
-      global_known_letters.add(letter)
       return [
         word for word in words
         if not (letter in word and word[index] == letter) and letter in word
       ]
-      
-
     case "correct":
-      #known_letters.add(letter)
       return [word for word in words if word[index] == letter] 
-      #return [word for word in words if letter in word]
       
-        
-
 
 def print_guess_word(word, states):
   BACKGROUND_GREEN = "\033[42m"
