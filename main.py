@@ -59,6 +59,9 @@ def main(quiet=False, start_word=None):
     letter_frequency.global_words_score = {} # Reset words score
     letter_frequency.global_letters = letter_frequency.global_zero_letters.copy() # Reset global letters
 
+  if guesses == 7:
+    print("Unable to solve today's Wordle.")
+
   time.sleep(5) # Allow page to slowly close
   exit_wordle()
 
