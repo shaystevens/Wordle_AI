@@ -14,6 +14,10 @@ global_letter_weights = {}
 
 
 def initialize_global_variables():
+  """
+  This function initializes the global variables of the letter_frequency module.
+
+  """
   global global_words
   global global_letters
   global global_zero_letters
@@ -26,6 +30,11 @@ def initialize_global_variables():
 
 
 def calculate_letter_frequency():
+  """
+  This function calculates the letter frequency of the letters within the possible words.
+  ALso normalises the letter frequnecy.
+
+  """
   global global_letters
   global global_words
   global global_normalised_letters
@@ -39,6 +48,10 @@ def calculate_letter_frequency():
 
 
 def calculate_words_score():
+  """
+  This function calculates the weighted score of each word according to the formula.
+
+  """
   global global_words_score
 
   global_words_score = {word: 0 for word in global_words}
@@ -50,12 +63,24 @@ def calculate_words_score():
 
 
 def get_guess_word():
+  """
+  This function gets the guess word by finding the word with the highest score.
+
+  Returns:
+  str: returns the guess word.
+  """
   global global_words_score
   guess_word = max(global_words_score, key=global_words_score.get)
   return guess_word
 
 
 def remove_words(words, letter, index, state):
+  """
+  This function removes words by a case basis depending on the letter and it's state.
+
+  Returns:
+  list: The words list after the words have been removed.
+  """
   match state:
     case "absent":
       return [word for word in words if (letter not in word or letter in global_known_letters) and word[index] != letter]
@@ -69,6 +94,9 @@ def remove_words(words, letter, index, state):
       
 
 def print_guess_word(word, states):
+  """
+  This function prints the guess word depending on each letter's state with ANSI.
+  """
   BACKGROUND_GREEN = "\033[42m"
   BACKGROUND_YELLOW = "\033[43m"
   RESET = "\033[0m"
@@ -89,6 +117,9 @@ def print_guess_word(word, states):
 
 
 def calculate_index_weight(letter_dict=defaultdict(lambda: [0, 0, 0, 0, 0]), possible_solutions=None):
+  """
+  This function calculates the weighted index of each possible letter.
+  """
   total_counts = defaultdict(int)
 
   for word in possible_solutions:
