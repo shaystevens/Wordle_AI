@@ -2,11 +2,11 @@ def get_words(file_path='valid-wordle-words.txt'):
     """
     Reads Wordle words from a file and returns them as a list.
 
-    Args:
-        file_path (str): The path to the file containing the Wordle words.
+    Parameters:
+    file_path (str): The path to the file containing the Wordle words.
 
     Returns:
-        list: A list of valid Wordle words.
+    list: A list of valid Wordle words.
     """
     try:
         with open(file_path, 'r') as file:
@@ -26,11 +26,11 @@ def get_letters(file_path='alphabet.txt'):
     """
     Reads alphabet from a file and returns them as a dict.
 
-    Args:
-        file_path (str): The path to the file containing alphabet letters.
+    Parameters:
+    file_path (str): The path to the file containing alphabet letters.
 
     Returns:
-        list: A dict of valid english letters.
+    list: A dict of valid english letters.
     """
     letters_dict = {}
     try:
