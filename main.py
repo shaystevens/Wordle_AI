@@ -12,13 +12,11 @@ def main(quiet=False, start_word=None):
   if start_word is not None and (len(start_word) != 5 or start_word not in letter_frequency.global_words):
     print("Invalid word. Try again.")
     exit(1)
-  
-  calculate_index_weight(possible_solutions=letter_frequency.global_words)
-  #print(letter_frequency.global_letter_weights)
 
   start_wordle(quiet)
 
   start_time = time.time()
+  calculate_index_weight(possible_solutions=letter_frequency.global_words)
   while guesses < 7:
     time.sleep(0.5)
     calculate_letter_frequency()
@@ -36,6 +34,7 @@ def main(quiet=False, start_word=None):
     states = get_word_results(guesses)
 
     print_guess_word(guess_word, states)
+
     if all(state == "correct" for state in states):
       end_time = time.time()
       elapsed_time = end_time - start_time
@@ -55,7 +54,7 @@ def main(quiet=False, start_word=None):
 if __name__ == "__main__":
   parser = argparse.ArgumentParser(description="This Python program is designed to solve the New York Times Wordle game\nby leveraging letter frequency analysis and automating user input through Selenium.")
 
-  # Adding optional arguments
+  # Optional arguments
   parser.add_argument('--quiet', action='store_true', help='Allows the program to simulate the game logic internally without opening a web browser.')
   parser.add_argument('--start_word', type=str, default=None, help='Choose starting word; defaults to a preset value if not specified.')
 
