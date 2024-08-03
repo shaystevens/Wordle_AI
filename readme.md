@@ -73,4 +73,4 @@ $P(W_i, i)$ - Function that calculates the positioning score of the letter at it
 
 ## License
 
-This project is licensed under the terms of the GNU General Public License v3.0. See the [LICENSE](./LICENSE) file for details.
+This project is licensed under the terms of the GNU General Public License v3.0. See the [LICENSE](./License) file for details.
