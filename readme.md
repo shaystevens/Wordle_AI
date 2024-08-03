@@ -63,13 +63,13 @@ $$
 Score(W) = U*\sum_{i=0}^{n} (F(W_i) * P(W_i, i))
 $$
 
-$ W $ - Represents the word
+$W$ - Represents the word
 
-$ U $ - The number of unique letters in the word.
+$U$ - The number of unique letters in the word.
 
-$ F(W_i) $ - Function that calculates the frequency score for the letter in the word.
+$F(W_i)$ - Function that calculates the frequency score for the letter in the word.
 
-$ P(W_i, i) $ - Function that calculates the positioning score of the letter at it's index.
+$P(W_i, i)$ - Function that calculates the positioning score of the letter at it's index.
 
 ## License
 
