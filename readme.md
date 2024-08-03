@@ -56,7 +56,7 @@ This project automates the process of playing the popular Wordle game using Sele
 * `--start_word` (str) The starting word to use. If None, a default word will be chosen. Defaults to None.
 
 ## Algorithm
-This project uses letter frequency analysis along with weighting the index positions of the letter.
+This project uses letter frequency analysis along with weighing the index positions of the letter.
 
 ### Word Score formula
 $$
