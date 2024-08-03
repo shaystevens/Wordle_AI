@@ -16,7 +16,7 @@ def main(quiet=False, start_word=None):
   Returns:
       list: A list of valid Wordle words.
   """
-  guesses = 0
+  guesses = 1
   
   initialize_global_variables()
   if start_word is not None and (len(start_word) != 5 or start_word not in letter_frequency.global_words):
@@ -33,11 +33,10 @@ def main(quiet=False, start_word=None):
     calculate_words_score()
     guess_word = get_guess_word()
 
-    if start_word is not None and guesses < 1:
+    if start_word is not None and guesses < 2:
       guess_word = start_word
 
     input_guess(guess_word)
-    guesses += 1
 
     time.sleep(1.5) # Wait for word input animation to finish
     states = get_word_results(guesses)
@@ -58,6 +57,7 @@ def main(quiet=False, start_word=None):
 
     letter_frequency.global_words_score = {} # Reset words score
     letter_frequency.global_letters = letter_frequency.global_zero_letters.copy() # Reset global letters
+    guesses += 1
 
   if guesses == 7:
     print("Unable to solve today's Wordle.")
