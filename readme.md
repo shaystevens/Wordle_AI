@@ -53,7 +53,7 @@ This project automates the process of playing the popular Wordle game using Sele
 
 ### Additional flags
 * `--quiet` (bool) If True, suppresses output to the console. Defaults to False.
-* `--start_word` (str) The starting word to use. Defaults to None.
+* `--start_word` (str) The starting word to use. If None, a default word will be chosen. Defaults to None.
 
 ## Algorithm
 This project uses letter frequency analysis along with weighting the index positions of the letter.
